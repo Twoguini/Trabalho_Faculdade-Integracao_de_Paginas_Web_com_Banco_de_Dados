@@ -1,0 +1,27 @@
+<main class="container">
+
+  <h1 class="fst-normal fw-bold">Dados do Livro</h1>
+  <form (submit)="incluir()" ngNativeValidate>
+    <div class="mb-3">
+      <label for="tituloForm" class="form-label fw-bold">Título</label>
+      <input class="form-control" id="tituloForm" aria-describedby="emailHelp" name="titulo" [(ngModel)]="livro.titulo" required>
+    </div>
+    <div class="mb-3">
+      <label for="resumoForm" class="form-label fw-bold">Resumo</label>
+      <textarea class="form-control" id="resumoForm" rows="4" name="resumo" [(ngModel)]="livro.resumo" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="editoraForm" class="form-label fw-bold">Editora</label>
+      <select class="form-select" aria-label="Default select example" name="editora" [(ngModel)]="livro.codEditora" id="editoraForm" required>
+        <option value="" disabled selected>Selecione a Editora</option>
+        <option *ngFor="let editora of editoras" [ngValue]="editora.codEditora">{{editora.nome}}</option> 
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="autoresForm" class="form-label fw-bold">Autores (1 por linha)</label>
+      <textarea class="form-control" id="autoresForm" rows="4" name="autoresForm" [(ngModel)]="autoresForm" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+</main>
