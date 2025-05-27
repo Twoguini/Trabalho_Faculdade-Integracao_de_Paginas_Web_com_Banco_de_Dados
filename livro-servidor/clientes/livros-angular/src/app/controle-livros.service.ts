@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Livro } from './livro';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface LivroMongo {
@@ -18,7 +17,7 @@ const baseURL = "http://localhost:3030/livros";
 })
 export class ControleLivrosService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   async obterLivros(): Promise<Livro[]> {
     const response = await fetch(baseURL);
@@ -34,13 +33,9 @@ export class ControleLivrosService {
   }
 
   async incluir(livro: Livro): Promise<boolean> {
-    const livroMongo: LivroMongo = {
-      _id: '',
-      codEditora: livro.codEditora,
-      titulo: livro.titulo,
-      resumo: livro.resumo,
-      autores: livro.autores
-    };
+     const { codigo, ...livroMongo } = livro;
+
+    console.log(livroMongo);
 
     const response = await fetch(baseURL, {
       method: 'POST',

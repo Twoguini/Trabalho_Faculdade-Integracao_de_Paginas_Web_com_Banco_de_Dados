@@ -5,7 +5,7 @@ export class Livro {
   resumo: string;
   autores: string[];
 
-  constructor(codigo: string, codEditora: number, titulo: string, resumo: string, autores: string[]) {
+  constructor(codEditora: number, titulo: string, resumo: string, autores: string[]) {
     this.codigo = "";
     this.codEditora = codEditora;
     this.titulo = titulo;

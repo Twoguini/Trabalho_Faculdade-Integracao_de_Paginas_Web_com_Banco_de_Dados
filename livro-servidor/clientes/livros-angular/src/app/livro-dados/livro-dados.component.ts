@@ -34,6 +34,7 @@ export class LivroDadosComponent {
   }
 
   incluir = (): void => {
+    this.livro.autores = this.autoresForm.split('\n'); 
     this.servLivros.incluir(this.livro).then(() => {
       this.router.navigateByUrl('/lista');
     });
